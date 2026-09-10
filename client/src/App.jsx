@@ -1,4 +1,5 @@
 import Nav from './components/Nav.jsx';
+import Backdrop from './components/Backdrop.jsx';
 import Hero from './components/Hero.jsx';
 import Marquee from './components/Marquee.jsx';
 import Services from './components/Services.jsx';
@@ -13,6 +14,7 @@ import Footer from './components/Footer.jsx';
 export default function App() {
   return (
     <>
+      <Backdrop />
       <Nav />
       <main>
         <Hero />
