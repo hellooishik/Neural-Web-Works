@@ -3,7 +3,12 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const dataDir = path.join(here, '..', 'data');
+
+// Leads live outside the deploy directory in production, so redeploying the
+// app cannot wipe them. DATA_DIR may be absolute or relative to server/.
+const dataDir = process.env.DATA_DIR
+  ? path.resolve(here, '..', process.env.DATA_DIR)
+  : path.join(here, '..', 'data');
 const jsonFile = path.join(dataDir, 'leads.json');
 const csvFile = path.join(dataDir, 'leads.csv');
 
